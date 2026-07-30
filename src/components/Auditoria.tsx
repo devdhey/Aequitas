@@ -64,7 +64,7 @@ export default function Auditoria() {
             <tbody className="divide-y divide-border-subtle">
               {auditLogs.map((log) => (
                 <tr key={log.id} className="hover:bg-bg-app/50 transition-colors group text-base">
-                  <td className="px-6 py-5 font-mono text-sm text-text-muted">{log.id}</td>
+                  <td className="px-6 py-5 font-mono text-sm font-bold text-text-primary">{log.id}</td>
                   <td className="px-6 py-5 text-text-secondary">{log.date}</td>
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-2 font-medium text-text-primary">
