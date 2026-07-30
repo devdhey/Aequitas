@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aequitas_prototype
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mapeia o código fonte para o container para permitir Hot-Reload
+      - .:/app
+      # Evita que o node_modules local sobrescreva o do container
+      - /app/node_modules
+    environment:
+      # Variável útil para o Hot Reload (HMR) funcionar corretamente em sistemas Windows usando WSL2 ou Hyper-V
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_USE_POLLING=true
