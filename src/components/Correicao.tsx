@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { UploadCloud, FileArchive, Settings, Play, CheckCircle2, Loader2, Database, AlertCircle } from 'lucide-react';
+import { UploadCloud, FileArchive, Settings, Play, CheckCircle2, Database } from 'lucide-react';
 
 export default function Correicao() {
   const [step, setStep] = useState<1 | 2 | 3>(1); // 1: Upload, 2: Config, 3: Processing

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Server, Lock, Cpu, Save, Database, ShieldCheck } from 'lucide-react';
+import { Server, Lock, Cpu, Save, Database, ShieldCheck } from 'lucide-react';
 
 export default function Configuracoes() {
   const [activeTab, setActiveTab] = useState('ia');
