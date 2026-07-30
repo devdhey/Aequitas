@@ -27,7 +27,7 @@ export default function Sidebar({ activeScreen, setActiveScreen }: { activeScree
         <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-3">Principal</div>
         <nav className="space-y-1">
           <NavItem active={activeScreen === 'painel'} onClick={() => setActiveScreen('painel')} icon={<LayoutDashboard size={18} />} label="Painel Inicial" />
-          <NavItem active={activeScreen === 'copiloto'} onClick={() => setActiveScreen('copiloto')} icon={<MessageSquare size={18} />} label="Copiloto (Membro)" badge="IA" />
+          <NavItem active={activeScreen === 'copiloto'} onClick={() => setActiveScreen('copiloto')} icon={<MessageSquare size={18} />} label="CLAIM" badge="IA" />
         </nav>
 
         <div className="text-sm font-bold text-text-muted uppercase tracking-widest mt-8 mb-3">Módulos</div>

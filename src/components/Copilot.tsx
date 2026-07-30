@@ -66,7 +66,7 @@ export default function Copilot() {
             <Sparkles size={64} />
           </div>
           <h2 className="text-xl font-bold flex items-center gap-2 relative z-10">
-            <Sparkles size={20} /> Copiloto Aequitas
+            <Sparkles size={20} /> CLAIM
           </h2>
           <p className="text-primary-50 text-base mt-2 relative z-10 leading-relaxed">
             3 insights gerados em tempo real sobre a sua peça processual.
