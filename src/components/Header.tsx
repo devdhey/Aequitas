@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Search, Bell, X, FileText, AlertTriangle, CheckCircle, User, LogOut, Settings, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Header({ activeScreen }: { activeScreen: string }) {
+export default function Header({ activeScreen, onLogout }: { activeScreen: string, onLogout: () => void }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -146,7 +146,10 @@ export default function Header({ activeScreen }: { activeScreen: string }) {
                     </button>
                   </div>
                   <div className="p-3 border-t border-border-subtle">
-                    <button className="w-full flex items-center gap-3 px-3 py-2.5 text-base text-alert-critical hover:bg-alert-critical/10 rounded-lg transition-colors">
+                    <button 
+                      onClick={onLogout}
+                      className="w-full flex items-center gap-3 px-3 py-2.5 text-base text-alert-critical hover:bg-alert-critical/10 rounded-lg transition-colors"
+                    >
                       <LogOut size={18} /> Sair do Sistema
                     </button>
                   </div>
