@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Server, Lock, Cpu, Save, ShieldCheck, FileText, UploadCloud, Trash2 } from 'lucide-react';
+import { Server, Lock, Cpu, Save, ShieldCheck, FileText, UploadCloud, Trash2, Database, Activity, HardDrive } from 'lucide-react';
 
 export default function Configuracoes() {
   const [activeTab, setActiveTab] = useState('ia');
@@ -153,10 +153,86 @@ export default function Configuracoes() {
             </div>
           )}
 
-          {(activeTab === 'banco' || activeTab === 'infra') && (
-            <div className="flex flex-col items-center justify-center h-full text-text-muted opacity-50">
-              <Server size={48} className="mb-4" />
-              <p className="text-lg">Configurações técnicas avançadas.</p>
+          {activeTab === 'infra' && (
+            <div className="space-y-8 max-w-3xl">
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary mb-1">Infraestrutura On-Premise (TDP)</h2>
+                <p className="text-base text-text-secondary mb-6">Monitoramento e gerenciamento do cluster da Tecnisys Data Platform hospedado localmente no MPRS.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-bg-app border border-border-subtle p-5 rounded-xl shadow-sm">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 text-primary-600 font-semibold">
+                      <Database size={20} /> PostgreSYS
+                    </div>
+                    <span className="bg-success/10 text-success px-2 py-1 rounded text-xs font-bold uppercase tracking-wider">Online</span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-muted">Conexões Ativas</span>
+                      <span className="font-semibold text-text-primary">142 / 500</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-muted">Tamanho da Base (E-Proc)</span>
+                      <span className="font-semibold text-text-primary">4.2 TB</span>
+                    </div>
+                    <div className="w-full bg-border-subtle rounded-full h-2 mt-2">
+                      <div className="bg-primary-600 h-2 rounded-full" style={{ width: '45%' }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-bg-app border border-border-subtle p-5 rounded-xl shadow-sm">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 text-primary-600 font-semibold">
+                      <Cpu size={20} /> Cluster Aequitas-LLM
+                    </div>
+                    <span className="bg-success/10 text-success px-2 py-1 rounded text-xs font-bold uppercase tracking-wider">Online</span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-muted">Uso de GPU (Inferência)</span>
+                      <span className="font-semibold text-text-primary">78%</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-muted">Fila de Processamento</span>
+                      <span className="font-semibold text-text-primary">3 minutas pendentes</span>
+                    </div>
+                    <div className="w-full bg-border-subtle rounded-full h-2 mt-2">
+                      <div className="bg-alert-warning h-2 rounded-full" style={{ width: '78%' }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 border-t border-border-subtle pt-8 space-y-6">
+                <h3 className="text-lg font-semibold text-text-primary">Serviços Base</h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-4 bg-bg-surface border border-border-subtle rounded-lg">
+                    <div className="flex items-center gap-4">
+                      <div className="p-2 bg-blue-50 text-blue-600 rounded-md"><Activity size={20} /></div>
+                      <div>
+                        <p className="font-medium text-text-primary">Sincronizador E-Proc</p>
+                        <p className="text-sm text-text-secondary mt-0.5">Captura de processos e andamentos em tempo real</p>
+                      </div>
+                    </div>
+                    <button className="text-sm font-medium text-primary-600 hover:text-primary-700">Reiniciar Serviço</button>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-bg-surface border border-border-subtle rounded-lg">
+                    <div className="flex items-center gap-4">
+                      <div className="p-2 bg-blue-50 text-blue-600 rounded-md"><HardDrive size={20} /></div>
+                      <div>
+                        <p className="font-medium text-text-primary">Armazenamento de Vetores (RAG)</p>
+                        <p className="text-sm text-text-secondary mt-0.5">Base normativa e jurisprudência indexada (CLAIM)</p>
+                      </div>
+                    </div>
+                    <button className="text-sm font-medium text-primary-600 hover:text-primary-700">Recriar Índices</button>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
