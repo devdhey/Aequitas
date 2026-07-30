@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Server, Lock, Cpu, Save, Database, ShieldCheck } from 'lucide-react';
+import { Server, Lock, Cpu, Save, Database, ShieldCheck, FileText, UploadCloud, Trash2 } from 'lucide-react';
 
 export default function Configuracoes() {
   const [activeTab, setActiveTab] = useState('ia');
@@ -30,7 +30,7 @@ export default function Configuracoes() {
         <div className="w-64 shrink-0 bg-bg-surface border border-border-subtle rounded-radius-premium shadow-sm p-4 flex flex-col gap-2">
           <TabButton active={activeTab === 'ia'} onClick={() => setActiveTab('ia')} icon={<Cpu size={18} />} label="Inteligência Artificial" />
           <TabButton active={activeTab === 'privacidade'} onClick={() => setActiveTab('privacidade')} icon={<Lock size={18} />} label="Privacidade & Segurança" />
-          <TabButton active={activeTab === 'banco'} onClick={() => setActiveTab('banco')} icon={<Database size={18} />} label="Conexão TDP / E-Proc" />
+          <TabButton active={activeTab === 'templates'} onClick={() => setActiveTab('templates')} icon={<FileText size={18} />} label="Templates Institucionais" />
           <TabButton active={activeTab === 'infra'} onClick={() => setActiveTab('infra')} icon={<Server size={18} />} label="Infraestrutura" />
         </div>
 
@@ -107,6 +107,48 @@ export default function Configuracoes() {
                     <span className="block text-sm text-text-secondary mt-1">Mantém histórico de prompts e respostas para auditoria da Corregedoria por 5 anos.</span>
                   </div>
                 </label>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'templates' && (
+            <div className="space-y-8 max-w-3xl">
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary mb-1">Templates Institucionais</h2>
+                <p className="text-base text-text-secondary mb-6">Faça o upload de modelos de documentos (Word, PDF) para balizar o formato de saída da IA.</p>
+              </div>
+
+              <div className="border-2 border-dashed border-border-subtle hover:border-primary-500 transition-colors rounded-xl p-8 flex flex-col items-center justify-center text-center bg-bg-app/50 cursor-pointer group">
+                <div className="w-16 h-16 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <UploadCloud size={32} />
+                </div>
+                <h3 className="font-semibold text-text-primary text-lg">Clique ou arraste os templates aqui</h3>
+                <p className="text-sm text-text-muted mt-2">Suporta .DOCX, .PDF e .TXT (Máx. 10MB)</p>
+              </div>
+
+              <div className="space-y-3 mt-8">
+                <h3 className="font-semibold text-text-primary text-lg border-b border-border-subtle pb-2">Templates Ativos na Base do LLM</h3>
+                
+                {[
+                  { name: "Modelo_Minuta_Provimento.docx", type: "Provimento", date: "Hoje" },
+                  { name: "Padrao_Relatorio_Correicao_Massiva.docx", type: "Relatório", date: "Há 3 dias" },
+                  { name: "Modelo_Oficio_Corregedoria.pdf", type: "Ofício", date: "Há 1 semana" }
+                ].map((tpl, i) => (
+                  <div key={i} className="flex items-center justify-between p-4 bg-bg-app border border-border-subtle rounded-lg hover:border-primary-300 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="p-2 bg-blue-50 text-blue-600 rounded-md">
+                        <FileText size={20} />
+                      </div>
+                      <div>
+                        <p className="font-medium text-text-primary text-base">{tpl.name}</p>
+                        <p className="text-sm text-text-secondary mt-0.5">Tipo: {tpl.type} • Atualizado {tpl.date}</p>
+                      </div>
+                    </div>
+                    <button className="text-text-muted hover:text-alert-critical p-2 transition-colors" title="Remover Template">
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           )}
