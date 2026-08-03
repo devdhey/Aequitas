@@ -29,6 +29,7 @@ export default function Header({ activeScreen, onLogout }: { activeScreen: strin
       case 'base_normativa': return 'Base Normativa';
       case 'auditoria': return 'Auditoria de Sistema';
       case 'configuracoes': return 'Configurações Globais';
+      case 'sbom': return 'Lista de Materiais de Software';
       default: return 'Painel Inicial';
     }
   };

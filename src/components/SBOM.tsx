@@ -46,13 +46,13 @@ export default function SBOM() {
 
   return (
     <motion.div
-      className="h-[calc(100vh-120px)] w-full flex flex-col gap-6"
+      className="w-full flex flex-col gap-6"
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
       {/* Cabeçalho */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 shrink-0">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-text-primary">
             Lista de Materiais de Software
@@ -73,7 +73,7 @@ export default function SBOM() {
       </div>
 
       {/* Cards de resumo */}
-      <div className="grid grid-cols-4 gap-4 shrink-0">
+      <div className="grid grid-cols-4 gap-4">
         {[
           { icon: <Package2 size={20} />, label: 'Pacotes em Produção', valor: '38', sub: '7 diretos · 31 transitivos', cor: 'text-primary-600 bg-primary-50' },
           { icon: <Boxes size={20} />,    label: 'Pacotes de Dev', valor: '74', sub: '11 diretos · 63 transitivos', cor: 'text-text-muted bg-bg-app' },
@@ -97,9 +97,9 @@ export default function SBOM() {
       </div>
 
       {/* Container principal com abas */}
-      <div className="flex-1 bg-bg-surface border border-border-subtle rounded-radius-premium shadow-sm overflow-hidden flex flex-col min-h-0">
+      <div className="bg-bg-surface border border-border-subtle rounded-radius-premium shadow-sm overflow-hidden">
         {/* Barra de abas */}
-        <div className="px-6 pt-5 pb-0 border-b border-border-subtle bg-bg-app/30 shrink-0">
+        <div className="px-6 pt-5 pb-0 border-b border-border-subtle bg-bg-app/30">
           <div className="flex gap-1">
             {ABAS.map((a) => (
               <button
@@ -118,7 +118,7 @@ export default function SBOM() {
         </div>
 
         {/* Conteúdo da aba */}
-        <div className="flex-1 overflow-y-auto">
+        <div>
           {aba === 'Dependências' && (
             <div>
               <TabelaDeps titulo="Dependências de Produção" deps={dependenciasProducao} />
@@ -159,7 +159,7 @@ export default function SBOM() {
                 </tbody>
               </table>
 
-              <div className="mx-6 mb-6 bg-success/5 border border-success/20 rounded-radius-inner p-5 flex items-start gap-4">
+              <div className="bg-success/5 border border-success/20 rounded-radius-inner p-5 flex items-start gap-4">
                 <CheckCircle2 size={20} className="text-success mt-0.5 shrink-0" />
                 <div>
                   <p className="font-semibold text-text-primary">Inventário de licenças limpo</p>

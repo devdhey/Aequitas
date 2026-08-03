@@ -24,7 +24,7 @@ export default function Sidebar({ activeScreen, setActiveScreen }: { activeScree
         </div>
       </div>
       
-      <div className="px-6 py-4">
+      <div className="px-6 py-4 flex-1 overflow-y-auto min-h-0">
         <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-3">Principal</div>
         <nav className="space-y-1">
           <NavItem active={activeScreen === 'painel'} onClick={() => setActiveScreen('painel')} icon={<LayoutDashboard size={18} />} label="Painel Inicial" />
@@ -46,7 +46,7 @@ export default function Sidebar({ activeScreen, setActiveScreen }: { activeScree
         </nav>
       </div>
 
-      <div className="mt-auto p-4">
+      <div className="shrink-0 p-4">
         <div className="bg-primary-50 rounded-radius-premium p-4 relative overflow-hidden group cursor-pointer border border-border-subtle hover:border-primary-600/20 transition-colors">
           <div className="flex items-center gap-2 mb-2 text-primary-600 font-semibold text-base">
             <Sparkles size={18} />
