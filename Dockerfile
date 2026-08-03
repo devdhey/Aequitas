@@ -5,10 +5,10 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copia apenas os arquivos de dependência primeiro (melhora cache do Docker)
-COPY package.json package-lock.json* ./
+COPY package.json package-lock.json ./
 
-# Instala as dependências
-RUN npm install
+# Instala as dependências de forma determinística
+RUN npm ci
 
 # Copia o restante do código para o container
 COPY . .
@@ -16,5 +16,5 @@ COPY . .
 # Expõe a porta padrão do Vite
 EXPOSE 5173
 
-# Inicia o servidor do Vite, garantindo que ele escute em todas as interfaces de rede (--host)
-CMD ["npm", "run", "dev", "--", "--host"]
+# host e polling já configurados em vite.config.ts
+CMD ["npm", "run", "dev"]

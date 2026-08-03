@@ -1,12 +1,13 @@
-import { 
-  LayoutDashboard, 
-  MessageSquare, 
-  Scale, 
-  BookOpen, 
-  FileText, 
+import {
+  LayoutDashboard,
+  MessageSquare,
+  Scale,
+  BookOpen,
+  FileText,
   History,
   Settings,
-  Sparkles
+  Sparkles,
+  Package2
 } from 'lucide-react';
 import type { Screen } from '../App';
 import { motion } from 'framer-motion';
@@ -41,6 +42,7 @@ export default function Sidebar({ activeScreen, setActiveScreen }: { activeScree
         <nav className="space-y-1">
           <NavItem active={activeScreen === 'auditoria'} onClick={() => setActiveScreen('auditoria')} icon={<History size={18} />} label="Auditoria" />
           <NavItem active={activeScreen === 'configuracoes'} onClick={() => setActiveScreen('configuracoes')} icon={<Settings size={18} />} label="Configurações" />
+          <NavItem active={activeScreen === 'sbom'} onClick={() => setActiveScreen('sbom')} icon={<Package2 size={18} />} label="Lista de Materiais" />
         </nav>
       </div>
 
